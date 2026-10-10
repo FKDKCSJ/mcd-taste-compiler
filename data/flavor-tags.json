@@ -1,97 +1,1436 @@
 {
-  "_vocab": {
-    "kind": ["main", "chicken", "side", "sauce", "dessert", "drink", "coffee", "breakfast"],
-    "texture": ["脆", "酥", "多汁", "软嫩", "拉丝", "绵密", "顺滑", "嚼劲", "爆珠"],
-    "temp": ["热", "冰", "常温"],
-    "taste": ["咸香", "焦香", "奶香", "甜", "酸", "辣", "鲜", "清爽", "浓郁", "苦香", "碳酸"],
-    "heft": "1=轻 2=中 3=重（饱腹感/满足感，不等于热量）"
-  },
-  "items": [
-    {"name": "巨无霸", "kind": "main", "texture": ["多汁", "软嫩"], "temp": "热", "taste": ["咸香", "浓郁", "酸"], "heft": 3, "nutrition": "巨无霸"},
-    {"name": "双层吉士汉堡", "kind": "main", "texture": ["多汁", "拉丝"], "temp": "热", "taste": ["咸香", "奶香", "浓郁"], "heft": 3, "nutrition": "双层吉士汉堡"},
-    {"name": "吉士汉堡包", "kind": "main", "texture": ["软嫩"], "temp": "热", "taste": ["咸香", "奶香", "酸"], "heft": 2, "nutrition": "吉士汉堡包"},
-    {"name": "汉堡包", "kind": "main", "texture": ["软嫩"], "temp": "热", "taste": ["咸香", "酸"], "heft": 1, "nutrition": "汉堡包"},
-    {"name": "培根蔬萃双层牛堡", "kind": "main", "texture": ["多汁", "脆"], "temp": "热", "taste": ["焦香", "咸香", "清爽"], "heft": 3, "nutrition": "培根蔬萃双层牛堡"},
-    {"name": "不素之霸双层牛堡", "kind": "main", "texture": ["多汁"], "temp": "热", "taste": ["咸香", "浓郁", "焦香"], "heft": 3, "nutrition": "不素之霸双层牛堡"},
-    {"name": "高达吉士双牛堡", "kind": "main", "texture": ["多汁", "拉丝"], "temp": "热", "taste": ["奶香", "浓郁", "咸香"], "heft": 3, "nutrition": null},
-    {"name": "芝士安格斯厚牛堡", "kind": "main", "texture": ["多汁", "嚼劲", "拉丝"], "temp": "热", "taste": ["焦香", "奶香", "浓郁"], "heft": 3, "nutrition": "芝士安格斯厚牛堡"},
-    {"name": "培根安格斯厚牛堡", "kind": "main", "texture": ["多汁", "嚼劲"], "temp": "热", "taste": ["焦香", "咸香", "浓郁"], "heft": 3, "nutrition": "培根安格斯厚牛堡"},
-    {"name": "麦香鱼", "kind": "main", "texture": ["酥", "软嫩"], "temp": "热", "taste": ["鲜", "奶香", "酸"], "heft": 2, "nutrition": "麦香鱼"},
-    {"name": "双层深海鳕鱼堡", "kind": "main", "texture": ["酥", "软嫩"], "temp": "热", "taste": ["鲜", "奶香"], "heft": 3, "nutrition": "双层深海鳕鱼堡"},
-    {"name": "板烧鸡腿堡", "kind": "main", "texture": ["多汁", "嚼劲"], "temp": "热", "taste": ["焦香", "甜", "清爽"], "heft": 2, "nutrition": "板烧鸡腿堡"},
-    {"name": "麦辣鸡腿汉堡", "kind": "main", "texture": ["脆", "多汁"], "temp": "热", "taste": ["辣", "咸香"], "heft": 2, "nutrition": "麦辣鸡腿汉堡"},
-    {"name": "麦香鸡", "kind": "main", "texture": ["酥", "软嫩"], "temp": "热", "taste": ["咸香", "奶香"], "heft": 2, "nutrition": "麦香鸡"},
-    {"name": "龙焰鸡腿堡", "kind": "main", "texture": ["脆", "多汁"], "temp": "热", "taste": ["辣", "甜", "浓郁"], "heft": 2, "nutrition": null},
-    {"name": "龙焰芝士棒鸡腿堡", "kind": "main", "texture": ["脆", "多汁", "拉丝"], "temp": "热", "taste": ["辣", "奶香", "浓郁"], "heft": 3, "nutrition": null},
-    {"name": "酥酥多笋卷", "kind": "main", "texture": ["酥", "脆"], "temp": "热", "taste": ["鲜", "辣", "清爽"], "heft": 2, "nutrition": "酥酥多笋卷"},
-    {"name": "枫糖风味厚松饼猪柳蛋堡", "kind": "main", "texture": ["绵密", "软嫩"], "temp": "热", "taste": ["甜", "咸香"], "heft": 3, "nutrition": null},
-    {"name": "枫糖风味厚松饼猪柳堡", "kind": "main", "texture": ["绵密"], "temp": "热", "taste": ["甜", "咸香"], "heft": 2, "nutrition": null},
-
-    {"name": "麦乐鸡", "kind": "chicken", "texture": ["酥", "软嫩"], "temp": "热", "taste": ["咸香"], "heft": 1, "nutrition": "麦乐鸡5块"},
-    {"name": "麦辣鸡翅", "kind": "chicken", "texture": ["脆", "多汁"], "temp": "热", "taste": ["辣", "咸香"], "heft": 2, "nutrition": "麦辣鸡翅-2块"},
-    {"name": "薄皮焦香V翅", "kind": "chicken", "texture": ["脆", "多汁"], "temp": "热", "taste": ["焦香", "咸香"], "heft": 2, "nutrition": "薄皮焦香V翅"},
-    {"name": "麦麦脆汁鸡1块", "kind": "chicken", "texture": ["脆", "多汁"], "temp": "热", "taste": ["咸香", "鲜"], "heft": 2, "nutrition": "麦麦脆汁鸡-琵琶腿"},
-    {"name": "那么大鸡排（椒盐风味）", "kind": "chicken", "texture": ["脆", "嚼劲"], "temp": "热", "taste": ["咸香", "辣"], "heft": 2, "nutrition": "那么大鸡排"},
-    {"name": "蘸酱脆皮鸡柳", "kind": "chicken", "texture": ["脆", "软嫩"], "temp": "热", "taste": ["咸香"], "heft": 2, "nutrition": null},
-
-    {"name": "薯条", "kind": "side", "texture": ["脆", "绵密"], "temp": "热", "taste": ["咸香"], "heft": 1, "nutrition": "中薯条"},
-    {"name": "脆薯饼", "kind": "side", "texture": ["脆", "绵密"], "temp": "热", "taste": ["咸香"], "heft": 1, "nutrition": "脆薯饼"},
-    {"name": "心形薯饼5块", "kind": "side", "texture": ["脆", "绵密"], "temp": "热", "taste": ["咸香"], "heft": 1, "nutrition": null},
-    {"name": "月下相思扭扭薯", "kind": "side", "texture": ["脆"], "temp": "热", "taste": ["咸香", "甜"], "heft": 1, "nutrition": null},
-    {"name": "马苏里拉拉丝芝士条", "kind": "side", "texture": ["酥", "拉丝"], "temp": "热", "taste": ["奶香", "浓郁"], "heft": 1, "nutrition": null},
-    {"name": "玉米杯", "kind": "side", "texture": ["爆珠"], "temp": "热", "taste": ["甜", "清爽"], "heft": 1, "nutrition": "小杯玉米杯"},
-    {"name": "苹果片", "kind": "side", "texture": ["脆"], "temp": "冰", "taste": ["甜", "酸", "清爽"], "heft": 1, "nutrition": "苹果片"},
-
-    {"name": "韩式烟熏芝士风味酱", "kind": "sauce", "texture": ["顺滑"], "temp": "常温", "taste": ["奶香", "焦香"], "heft": 1, "nutrition": null},
-    {"name": "日式鲜磨山葵酱", "kind": "sauce", "texture": ["顺滑"], "temp": "常温", "taste": ["辣", "清爽"], "heft": 1, "nutrition": null},
-
-    {"name": "圆筒冰淇淋", "kind": "dessert", "texture": ["顺滑", "脆"], "temp": "冰", "taste": ["奶香", "甜"], "heft": 1, "nutrition": "圆筒冰淇淋"},
-    {"name": "灰焰圆筒", "kind": "dessert", "texture": ["顺滑", "脆"], "temp": "冰", "taste": ["甜", "浓郁"], "heft": 1, "nutrition": null},
-    {"name": "新地", "kind": "dessert", "texture": ["顺滑"], "temp": "冰", "taste": ["甜", "浓郁"], "heft": 1, "nutrition": "朱古力新地"},
-    {"name": "经典麦旋风", "kind": "dessert", "texture": ["顺滑", "脆"], "temp": "冰", "taste": ["奶香", "甜"], "heft": 2, "nutrition": "奥利奥麦旋风"},
-    {"name": "蓝莓爆爆珠麦旋风", "kind": "dessert", "texture": ["顺滑", "爆珠"], "temp": "冰", "taste": ["甜", "酸"], "heft": 2, "nutrition": null},
-    {"name": "泷盐星星麦旋风", "kind": "dessert", "texture": ["顺滑", "脆"], "temp": "冰", "taste": ["甜", "咸香"], "heft": 2, "nutrition": null},
-    {"name": "泷愿成真麦旋风——大米风味", "kind": "dessert", "texture": ["顺滑", "嚼劲"], "temp": "冰", "taste": ["奶香", "甜"], "heft": 2, "nutrition": null},
-    {"name": "派", "kind": "dessert", "texture": ["酥", "顺滑"], "temp": "热", "taste": ["甜", "酸"], "heft": 1, "nutrition": "菠萝派"},
-    {"name": "冰糖葫芦酸奶风味派", "kind": "dessert", "texture": ["酥", "顺滑"], "temp": "热", "taste": ["酸", "甜"], "heft": 1, "nutrition": null},
-
-    {"name": "可乐", "kind": "drink", "texture": [], "temp": "冰", "taste": ["碳酸", "甜"], "heft": 1, "nutrition": "可乐中杯"},
-    {"name": "无糖可口可乐", "kind": "drink", "texture": [], "temp": "冰", "taste": ["碳酸"], "heft": 1, "nutrition": "无糖可口可乐中杯"},
-    {"name": "雪碧", "kind": "drink", "texture": [], "temp": "冰", "taste": ["碳酸", "甜", "清爽"], "heft": 1, "nutrition": "雪碧中杯"},
-    {"name": "阳光柠檬红茶", "kind": "drink", "texture": [], "temp": "冰", "taste": ["酸", "甜", "清爽"], "heft": 1, "nutrition": "阳光柠檬红茶中杯"},
-    {"name": "锡兰红茶", "kind": "drink", "texture": [], "temp": "热", "taste": ["清爽", "苦香"], "heft": 1, "nutrition": "锡兰红茶"},
-    {"name": "【美汁源】“黄金橙橙”", "kind": "drink", "texture": [], "temp": "冰", "taste": ["甜", "酸"], "heft": 1, "nutrition": "【美汁源】“黄金橙橙”"},
-    {"name": "【美汁源】“多汁柠柠”", "kind": "drink", "texture": [], "temp": "冰", "taste": ["酸", "清爽"], "heft": 1, "nutrition": null},
-    {"name": "阳光橙麦炫酷", "kind": "drink", "texture": ["顺滑"], "temp": "冰", "taste": ["甜", "酸"], "heft": 1, "nutrition": "麦旋酷阳光橙"},
-    {"name": "怡泉+C", "kind": "drink", "texture": [], "temp": "冰", "taste": ["碳酸", "酸", "清爽"], "heft": 1, "nutrition": "中杯怡泉+C"},
-    {"name": "纯悦", "kind": "drink", "texture": [], "temp": "常温", "taste": ["清爽"], "heft": 1, "nutrition": "纯悦"},
-    {"name": "纯牛奶(盒装)", "kind": "drink", "texture": ["顺滑"], "temp": "常温", "taste": ["奶香"], "heft": 1, "nutrition": "纯牛奶（盒装）"},
-    {"name": "100% 苹果汁(盒装)", "kind": "drink", "texture": [], "temp": "常温", "taste": ["甜", "酸"], "heft": 1, "nutrition": "100%苹果汁"},
-
-    {"name": "浓缩咖啡", "kind": "coffee", "texture": [], "temp": "热", "taste": ["苦香", "浓郁"], "heft": 1, "nutrition": "浓缩咖啡"},
-    {"name": "麦咖啡™美式", "kind": "coffee", "texture": [], "temp": "热", "taste": ["苦香"], "heft": 1, "nutrition": "热美式中杯"},
-    {"name": "鲜萃咖啡", "kind": "coffee", "texture": [], "temp": "热", "taste": ["苦香", "清爽"], "heft": 1, "nutrition": "小杯鲜萃咖啡"},
-    {"name": "麦咖啡™奶铁", "kind": "coffee", "texture": ["顺滑"], "temp": "热", "taste": ["奶香", "苦香"], "heft": 1, "nutrition": "热奶铁中杯"},
-    {"name": "燕麦奶铁", "kind": "coffee", "texture": ["顺滑"], "temp": "热", "taste": ["奶香", "苦香"], "heft": 1, "nutrition": "热燕麦奶铁中杯"},
-    {"name": "卡布奇诺", "kind": "coffee", "texture": ["绵密"], "temp": "热", "taste": ["奶香", "苦香"], "heft": 1, "nutrition": "卡布奇诺中杯"},
-    {"name": "咖啡阿芙佳朵", "kind": "coffee", "texture": ["顺滑"], "temp": "冰", "taste": ["苦香", "奶香", "甜"], "heft": 1, "nutrition": "咖啡阿芙佳朵"},
-    {"name": "奶铁雪冰", "kind": "coffee", "texture": ["绵密"], "temp": "冰", "taste": ["奶香", "苦香", "甜"], "heft": 2, "nutrition": null},
-    {"name": "浓浓黑巧（冰/热）", "kind": "coffee", "texture": ["顺滑"], "temp": "热", "taste": ["浓郁", "甜"], "heft": 1, "nutrition": "热浓浓黑巧中杯"},
-    {"name": "浓浓燕麦黑巧（冰/热）", "kind": "coffee", "texture": ["顺滑"], "temp": "热", "taste": ["浓郁", "甜"], "heft": 1, "nutrition": "热浓浓燕麦黑巧中杯"},
-    {"name": "牛奶", "kind": "coffee", "texture": ["顺滑"], "temp": "热", "taste": ["奶香"], "heft": 1, "nutrition": "热牛奶中杯"},
-    {"name": "燕麦奶", "kind": "coffee", "texture": ["顺滑"], "temp": "热", "taste": ["奶香", "甜"], "heft": 1, "nutrition": "热燕麦奶中杯"},
-
-    {"name": "猪柳蛋麦满分", "kind": "breakfast", "texture": ["软嫩", "嚼劲"], "temp": "热", "taste": ["咸香", "奶香"], "heft": 2, "nutrition": "猪柳蛋麦满分"},
-    {"name": "猪柳麦满分", "kind": "breakfast", "texture": ["嚼劲"], "temp": "热", "taste": ["咸香"], "heft": 2, "nutrition": "猪柳麦满分"},
-    {"name": "烟肉蛋麦满分", "kind": "breakfast", "texture": ["软嫩"], "temp": "热", "taste": ["焦香", "咸香"], "heft": 2, "nutrition": "烟肉蛋麦满分"},
-    {"name": "火腿扒麦满分", "kind": "breakfast", "texture": ["软嫩"], "temp": "热", "taste": ["咸香"], "heft": 1, "nutrition": "火腿扒麦满分"},
-    {"name": "大脆鸡扒麦满分", "kind": "breakfast", "texture": ["脆", "多汁"], "temp": "热", "taste": ["咸香"], "heft": 2, "nutrition": "大脆鸡扒麦满分"},
-    {"name": "原味板烧鸡腿麦满分", "kind": "breakfast", "texture": ["多汁", "嚼劲"], "temp": "热", "taste": ["焦香", "甜"], "heft": 2, "nutrition": "原味板烧鸡腿麦满分"},
-    {"name": "脆香油条", "kind": "breakfast", "texture": ["脆", "酥"], "temp": "热", "taste": ["咸香"], "heft": 1, "nutrition": "脆香油条"},
-    {"name": "皮蛋鸡肉粥", "kind": "breakfast", "texture": ["绵密", "顺滑"], "temp": "热", "taste": ["鲜", "咸香"], "heft": 1, "nutrition": "皮蛋鸡肉粥"},
-    {"name": "雪菜脆笋鸡肉粥", "kind": "breakfast", "texture": ["绵密", "脆"], "temp": "热", "taste": ["鲜", "清爽"], "heft": 1, "nutrition": "雪菜脆笋鸡肉粥"},
-    {"name": "优品豆浆", "kind": "breakfast", "texture": ["顺滑"], "temp": "热", "taste": ["清爽", "甜"], "heft": 1, "nutrition": "优品豆浆小杯"},
-    {"name": "鸡肉蛋沙拉叠叠卷", "kind": "breakfast", "texture": ["软嫩", "脆"], "temp": "常温", "taste": ["清爽", "奶香"], "heft": 1, "nutrition": "鸡肉蛋沙拉叠叠卷"},
-    {"name": "鲜蔬蛋沙拉叠叠卷", "kind": "breakfast", "texture": ["软嫩", "脆"], "temp": "常温", "taste": ["清爽"], "heft": 1, "nutrition": "鲜蔬蛋沙拉叠叠卷"}
+ "_vocab": {
+  "kind": [
+   "main",
+   "chicken",
+   "side",
+   "sauce",
+   "dessert",
+   "drink",
+   "coffee",
+   "breakfast"
+  ],
+  "texture": [
+   "脆",
+   "酥",
+   "多汁",
+   "软嫩",
+   "拉丝",
+   "绵密",
+   "顺滑",
+   "嚼劲",
+   "爆珠"
+  ],
+  "temp": [
+   "热",
+   "冰",
+   "常温"
+  ],
+  "taste": [
+   "咸香",
+   "焦香",
+   "奶香",
+   "甜",
+   "酸",
+   "辣",
+   "鲜",
+   "清爽",
+   "浓郁",
+   "苦香",
+   "碳酸"
+  ],
+  "heft": "1=轻 2=中 3=重（饱腹感/满足感，不等于热量）",
+  "situ": [
+   "单手",
+   "不掉渣",
+   "好分享",
+   "快吃完"
   ]
+ },
+ "items": [
+  {
+   "name": "巨无霸",
+   "kind": "main",
+   "texture": [
+    "多汁",
+    "软嫩"
+   ],
+   "temp": "热",
+   "taste": [
+    "咸香",
+    "浓郁",
+    "酸"
+   ],
+   "heft": 3,
+   "nutrition": "巨无霸",
+   "situ": []
+  },
+  {
+   "name": "双层吉士汉堡",
+   "kind": "main",
+   "texture": [
+    "多汁",
+    "拉丝"
+   ],
+   "temp": "热",
+   "taste": [
+    "咸香",
+    "奶香",
+    "浓郁"
+   ],
+   "heft": 3,
+   "nutrition": "双层吉士汉堡",
+   "situ": []
+  },
+  {
+   "name": "吉士汉堡包",
+   "kind": "main",
+   "texture": [
+    "软嫩"
+   ],
+   "temp": "热",
+   "taste": [
+    "咸香",
+    "奶香",
+    "酸"
+   ],
+   "heft": 2,
+   "nutrition": "吉士汉堡包",
+   "situ": [
+    "单手",
+    "快吃完"
+   ]
+  },
+  {
+   "name": "汉堡包",
+   "kind": "main",
+   "texture": [
+    "软嫩"
+   ],
+   "temp": "热",
+   "taste": [
+    "咸香",
+    "酸"
+   ],
+   "heft": 1,
+   "nutrition": "汉堡包",
+   "situ": [
+    "单手",
+    "快吃完"
+   ]
+  },
+  {
+   "name": "培根蔬萃双层牛堡",
+   "kind": "main",
+   "texture": [
+    "多汁",
+    "脆"
+   ],
+   "temp": "热",
+   "taste": [
+    "焦香",
+    "咸香",
+    "清爽"
+   ],
+   "heft": 3,
+   "nutrition": "培根蔬萃双层牛堡",
+   "situ": []
+  },
+  {
+   "name": "不素之霸双层牛堡",
+   "kind": "main",
+   "texture": [
+    "多汁"
+   ],
+   "temp": "热",
+   "taste": [
+    "咸香",
+    "浓郁",
+    "焦香"
+   ],
+   "heft": 3,
+   "nutrition": "不素之霸双层牛堡",
+   "situ": []
+  },
+  {
+   "name": "高达吉士双牛堡",
+   "kind": "main",
+   "texture": [
+    "多汁",
+    "拉丝"
+   ],
+   "temp": "热",
+   "taste": [
+    "奶香",
+    "浓郁",
+    "咸香"
+   ],
+   "heft": 3,
+   "nutrition": null,
+   "situ": []
+  },
+  {
+   "name": "芝士安格斯厚牛堡",
+   "kind": "main",
+   "texture": [
+    "多汁",
+    "嚼劲",
+    "拉丝"
+   ],
+   "temp": "热",
+   "taste": [
+    "焦香",
+    "奶香",
+    "浓郁"
+   ],
+   "heft": 3,
+   "nutrition": "芝士安格斯厚牛堡",
+   "situ": []
+  },
+  {
+   "name": "培根安格斯厚牛堡",
+   "kind": "main",
+   "texture": [
+    "多汁",
+    "嚼劲"
+   ],
+   "temp": "热",
+   "taste": [
+    "焦香",
+    "咸香",
+    "浓郁"
+   ],
+   "heft": 3,
+   "nutrition": "培根安格斯厚牛堡",
+   "situ": []
+  },
+  {
+   "name": "麦香鱼",
+   "kind": "main",
+   "texture": [
+    "酥",
+    "软嫩"
+   ],
+   "temp": "热",
+   "taste": [
+    "鲜",
+    "奶香",
+    "酸"
+   ],
+   "heft": 2,
+   "nutrition": "麦香鱼",
+   "situ": [
+    "单手"
+   ]
+  },
+  {
+   "name": "双层深海鳕鱼堡",
+   "kind": "main",
+   "texture": [
+    "酥",
+    "软嫩"
+   ],
+   "temp": "热",
+   "taste": [
+    "鲜",
+    "奶香"
+   ],
+   "heft": 3,
+   "nutrition": "双层深海鳕鱼堡",
+   "situ": []
+  },
+  {
+   "name": "板烧鸡腿堡",
+   "kind": "main",
+   "texture": [
+    "多汁",
+    "嚼劲"
+   ],
+   "temp": "热",
+   "taste": [
+    "焦香",
+    "甜",
+    "清爽"
+   ],
+   "heft": 2,
+   "nutrition": "板烧鸡腿堡",
+   "situ": [
+    "单手"
+   ]
+  },
+  {
+   "name": "麦辣鸡腿汉堡",
+   "kind": "main",
+   "texture": [
+    "脆",
+    "多汁"
+   ],
+   "temp": "热",
+   "taste": [
+    "辣",
+    "咸香"
+   ],
+   "heft": 2,
+   "nutrition": "麦辣鸡腿汉堡",
+   "situ": [
+    "单手"
+   ]
+  },
+  {
+   "name": "麦香鸡",
+   "kind": "main",
+   "texture": [
+    "酥",
+    "软嫩"
+   ],
+   "temp": "热",
+   "taste": [
+    "咸香",
+    "奶香"
+   ],
+   "heft": 2,
+   "nutrition": "麦香鸡",
+   "situ": [
+    "单手"
+   ]
+  },
+  {
+   "name": "龙焰鸡腿堡",
+   "kind": "main",
+   "texture": [
+    "脆",
+    "多汁"
+   ],
+   "temp": "热",
+   "taste": [
+    "辣",
+    "甜",
+    "浓郁"
+   ],
+   "heft": 2,
+   "nutrition": null,
+   "situ": [
+    "单手"
+   ]
+  },
+  {
+   "name": "龙焰芝士棒鸡腿堡",
+   "kind": "main",
+   "texture": [
+    "脆",
+    "多汁",
+    "拉丝"
+   ],
+   "temp": "热",
+   "taste": [
+    "辣",
+    "奶香",
+    "浓郁"
+   ],
+   "heft": 3,
+   "nutrition": null,
+   "situ": []
+  },
+  {
+   "name": "酥酥多笋卷",
+   "kind": "main",
+   "texture": [
+    "酥",
+    "脆"
+   ],
+   "temp": "热",
+   "taste": [
+    "鲜",
+    "辣",
+    "清爽"
+   ],
+   "heft": 2,
+   "nutrition": "酥酥多笋卷",
+   "situ": []
+  },
+  {
+   "name": "枫糖风味厚松饼猪柳蛋堡",
+   "kind": "main",
+   "texture": [
+    "绵密",
+    "软嫩"
+   ],
+   "temp": "热",
+   "taste": [
+    "甜",
+    "咸香"
+   ],
+   "heft": 3,
+   "nutrition": null,
+   "situ": []
+  },
+  {
+   "name": "枫糖风味厚松饼猪柳堡",
+   "kind": "main",
+   "texture": [
+    "绵密"
+   ],
+   "temp": "热",
+   "taste": [
+    "甜",
+    "咸香"
+   ],
+   "heft": 2,
+   "nutrition": null,
+   "situ": []
+  },
+  {
+   "name": "麦乐鸡",
+   "kind": "chicken",
+   "texture": [
+    "酥",
+    "软嫩"
+   ],
+   "temp": "热",
+   "taste": [
+    "咸香"
+   ],
+   "heft": 1,
+   "nutrition": "麦乐鸡5块",
+   "situ": [
+    "单手",
+    "不掉渣",
+    "好分享",
+    "快吃完"
+   ]
+  },
+  {
+   "name": "麦辣鸡翅",
+   "kind": "chicken",
+   "texture": [
+    "脆",
+    "多汁"
+   ],
+   "temp": "热",
+   "taste": [
+    "辣",
+    "咸香"
+   ],
+   "heft": 2,
+   "nutrition": "麦辣鸡翅-2块",
+   "situ": [
+    "好分享"
+   ]
+  },
+  {
+   "name": "薄皮焦香V翅",
+   "kind": "chicken",
+   "texture": [
+    "脆",
+    "多汁"
+   ],
+   "temp": "热",
+   "taste": [
+    "焦香",
+    "咸香"
+   ],
+   "heft": 2,
+   "nutrition": "薄皮焦香V翅",
+   "situ": [
+    "好分享"
+   ]
+  },
+  {
+   "name": "麦麦脆汁鸡1块",
+   "kind": "chicken",
+   "texture": [
+    "脆",
+    "多汁"
+   ],
+   "temp": "热",
+   "taste": [
+    "咸香",
+    "鲜"
+   ],
+   "heft": 2,
+   "nutrition": "麦麦脆汁鸡-琵琶腿",
+   "situ": [
+    "好分享"
+   ]
+  },
+  {
+   "name": "那么大鸡排（椒盐风味）",
+   "kind": "chicken",
+   "texture": [
+    "脆",
+    "嚼劲"
+   ],
+   "temp": "热",
+   "taste": [
+    "咸香",
+    "辣"
+   ],
+   "heft": 2,
+   "nutrition": "那么大鸡排",
+   "situ": [
+    "单手"
+   ]
+  },
+  {
+   "name": "蘸酱脆皮鸡柳",
+   "kind": "chicken",
+   "texture": [
+    "脆",
+    "软嫩"
+   ],
+   "temp": "热",
+   "taste": [
+    "咸香"
+   ],
+   "heft": 2,
+   "nutrition": null,
+   "situ": [
+    "单手",
+    "好分享"
+   ]
+  },
+  {
+   "name": "薯条",
+   "kind": "side",
+   "texture": [
+    "脆",
+    "绵密"
+   ],
+   "temp": "热",
+   "taste": [
+    "咸香"
+   ],
+   "heft": 1,
+   "nutrition": "中薯条",
+   "situ": [
+    "单手",
+    "好分享"
+   ]
+  },
+  {
+   "name": "脆薯饼",
+   "kind": "side",
+   "texture": [
+    "脆",
+    "绵密"
+   ],
+   "temp": "热",
+   "taste": [
+    "咸香"
+   ],
+   "heft": 1,
+   "nutrition": "脆薯饼",
+   "situ": [
+    "单手",
+    "快吃完"
+   ]
+  },
+  {
+   "name": "心形薯饼5块",
+   "kind": "side",
+   "texture": [
+    "脆",
+    "绵密"
+   ],
+   "temp": "热",
+   "taste": [
+    "咸香"
+   ],
+   "heft": 1,
+   "nutrition": null,
+   "situ": [
+    "单手",
+    "好分享"
+   ]
+  },
+  {
+   "name": "月下相思扭扭薯",
+   "kind": "side",
+   "texture": [
+    "脆"
+   ],
+   "temp": "热",
+   "taste": [
+    "咸香",
+    "甜"
+   ],
+   "heft": 1,
+   "nutrition": null,
+   "situ": [
+    "单手",
+    "好分享"
+   ]
+  },
+  {
+   "name": "马苏里拉拉丝芝士条",
+   "kind": "side",
+   "texture": [
+    "酥",
+    "拉丝"
+   ],
+   "temp": "热",
+   "taste": [
+    "奶香",
+    "浓郁"
+   ],
+   "heft": 1,
+   "nutrition": null,
+   "situ": [
+    "单手",
+    "好分享"
+   ]
+  },
+  {
+   "name": "玉米杯",
+   "kind": "side",
+   "texture": [
+    "爆珠"
+   ],
+   "temp": "热",
+   "taste": [
+    "甜",
+    "清爽"
+   ],
+   "heft": 1,
+   "nutrition": "小杯玉米杯",
+   "situ": [
+    "不掉渣"
+   ]
+  },
+  {
+   "name": "苹果片",
+   "kind": "side",
+   "texture": [
+    "脆"
+   ],
+   "temp": "冰",
+   "taste": [
+    "甜",
+    "酸",
+    "清爽"
+   ],
+   "heft": 1,
+   "nutrition": "苹果片",
+   "situ": [
+    "单手",
+    "不掉渣",
+    "好分享",
+    "快吃完"
+   ]
+  },
+  {
+   "name": "韩式烟熏芝士风味酱",
+   "kind": "sauce",
+   "texture": [
+    "顺滑"
+   ],
+   "temp": "常温",
+   "taste": [
+    "奶香",
+    "焦香"
+   ],
+   "heft": 1,
+   "nutrition": null,
+   "situ": []
+  },
+  {
+   "name": "日式鲜磨山葵酱",
+   "kind": "sauce",
+   "texture": [
+    "顺滑"
+   ],
+   "temp": "常温",
+   "taste": [
+    "辣",
+    "清爽"
+   ],
+   "heft": 1,
+   "nutrition": null,
+   "situ": []
+  },
+  {
+   "name": "圆筒冰淇淋",
+   "kind": "dessert",
+   "texture": [
+    "顺滑",
+    "脆"
+   ],
+   "temp": "冰",
+   "taste": [
+    "奶香",
+    "甜"
+   ],
+   "heft": 1,
+   "nutrition": "圆筒冰淇淋",
+   "situ": [
+    "单手",
+    "快吃完"
+   ]
+  },
+  {
+   "name": "灰焰圆筒",
+   "kind": "dessert",
+   "texture": [
+    "顺滑",
+    "脆"
+   ],
+   "temp": "冰",
+   "taste": [
+    "甜",
+    "浓郁"
+   ],
+   "heft": 1,
+   "nutrition": null,
+   "situ": [
+    "单手",
+    "快吃完"
+   ]
+  },
+  {
+   "name": "新地",
+   "kind": "dessert",
+   "texture": [
+    "顺滑"
+   ],
+   "temp": "冰",
+   "taste": [
+    "甜",
+    "浓郁"
+   ],
+   "heft": 1,
+   "nutrition": "朱古力新地",
+   "situ": [
+    "不掉渣"
+   ]
+  },
+  {
+   "name": "经典麦旋风",
+   "kind": "dessert",
+   "texture": [
+    "顺滑",
+    "脆"
+   ],
+   "temp": "冰",
+   "taste": [
+    "奶香",
+    "甜"
+   ],
+   "heft": 2,
+   "nutrition": "奥利奥麦旋风",
+   "situ": [
+    "不掉渣"
+   ]
+  },
+  {
+   "name": "蓝莓爆爆珠麦旋风",
+   "kind": "dessert",
+   "texture": [
+    "顺滑",
+    "爆珠"
+   ],
+   "temp": "冰",
+   "taste": [
+    "甜",
+    "酸"
+   ],
+   "heft": 2,
+   "nutrition": null,
+   "situ": [
+    "不掉渣"
+   ]
+  },
+  {
+   "name": "泷盐星星麦旋风",
+   "kind": "dessert",
+   "texture": [
+    "顺滑",
+    "脆"
+   ],
+   "temp": "冰",
+   "taste": [
+    "甜",
+    "咸香"
+   ],
+   "heft": 2,
+   "nutrition": null,
+   "situ": [
+    "不掉渣"
+   ]
+  },
+  {
+   "name": "泷愿成真麦旋风——大米风味",
+   "kind": "dessert",
+   "texture": [
+    "顺滑",
+    "嚼劲"
+   ],
+   "temp": "冰",
+   "taste": [
+    "奶香",
+    "甜"
+   ],
+   "heft": 2,
+   "nutrition": null,
+   "situ": [
+    "不掉渣"
+   ]
+  },
+  {
+   "name": "派",
+   "kind": "dessert",
+   "texture": [
+    "酥",
+    "顺滑"
+   ],
+   "temp": "热",
+   "taste": [
+    "甜",
+    "酸"
+   ],
+   "heft": 1,
+   "nutrition": "菠萝派",
+   "situ": [
+    "单手",
+    "快吃完"
+   ]
+  },
+  {
+   "name": "冰糖葫芦酸奶风味派",
+   "kind": "dessert",
+   "texture": [
+    "酥",
+    "顺滑"
+   ],
+   "temp": "热",
+   "taste": [
+    "酸",
+    "甜"
+   ],
+   "heft": 1,
+   "nutrition": null,
+   "situ": [
+    "单手",
+    "快吃完"
+   ]
+  },
+  {
+   "name": "可乐",
+   "kind": "drink",
+   "texture": [],
+   "temp": "冰",
+   "taste": [
+    "碳酸",
+    "甜"
+   ],
+   "heft": 1,
+   "nutrition": "可乐中杯",
+   "situ": [
+    "单手",
+    "不掉渣"
+   ]
+  },
+  {
+   "name": "无糖可口可乐",
+   "kind": "drink",
+   "texture": [],
+   "temp": "冰",
+   "taste": [
+    "碳酸"
+   ],
+   "heft": 1,
+   "nutrition": "无糖可口可乐中杯",
+   "situ": [
+    "单手",
+    "不掉渣"
+   ]
+  },
+  {
+   "name": "雪碧",
+   "kind": "drink",
+   "texture": [],
+   "temp": "冰",
+   "taste": [
+    "碳酸",
+    "甜",
+    "清爽"
+   ],
+   "heft": 1,
+   "nutrition": "雪碧中杯",
+   "situ": [
+    "单手",
+    "不掉渣"
+   ]
+  },
+  {
+   "name": "阳光柠檬红茶",
+   "kind": "drink",
+   "texture": [],
+   "temp": "冰",
+   "taste": [
+    "酸",
+    "甜",
+    "清爽"
+   ],
+   "heft": 1,
+   "nutrition": "阳光柠檬红茶中杯",
+   "situ": [
+    "单手",
+    "不掉渣"
+   ]
+  },
+  {
+   "name": "锡兰红茶",
+   "kind": "drink",
+   "texture": [],
+   "temp": "热",
+   "taste": [
+    "清爽",
+    "苦香"
+   ],
+   "heft": 1,
+   "nutrition": "锡兰红茶",
+   "situ": [
+    "单手",
+    "不掉渣"
+   ]
+  },
+  {
+   "name": "【美汁源】“黄金橙橙”",
+   "kind": "drink",
+   "texture": [],
+   "temp": "冰",
+   "taste": [
+    "甜",
+    "酸"
+   ],
+   "heft": 1,
+   "nutrition": "【美汁源】“黄金橙橙”",
+   "situ": [
+    "单手",
+    "不掉渣"
+   ]
+  },
+  {
+   "name": "【美汁源】“多汁柠柠”",
+   "kind": "drink",
+   "texture": [],
+   "temp": "冰",
+   "taste": [
+    "酸",
+    "清爽"
+   ],
+   "heft": 1,
+   "nutrition": null,
+   "situ": [
+    "单手",
+    "不掉渣"
+   ]
+  },
+  {
+   "name": "阳光橙麦炫酷",
+   "kind": "drink",
+   "texture": [
+    "顺滑"
+   ],
+   "temp": "冰",
+   "taste": [
+    "甜",
+    "酸"
+   ],
+   "heft": 1,
+   "nutrition": "麦旋酷阳光橙",
+   "situ": [
+    "单手",
+    "不掉渣"
+   ]
+  },
+  {
+   "name": "怡泉+C",
+   "kind": "drink",
+   "texture": [],
+   "temp": "冰",
+   "taste": [
+    "碳酸",
+    "酸",
+    "清爽"
+   ],
+   "heft": 1,
+   "nutrition": "中杯怡泉+C",
+   "situ": [
+    "单手",
+    "不掉渣"
+   ]
+  },
+  {
+   "name": "纯悦",
+   "kind": "drink",
+   "texture": [],
+   "temp": "常温",
+   "taste": [
+    "清爽"
+   ],
+   "heft": 1,
+   "nutrition": "纯悦",
+   "situ": [
+    "单手",
+    "不掉渣"
+   ]
+  },
+  {
+   "name": "纯牛奶(盒装)",
+   "kind": "drink",
+   "texture": [
+    "顺滑"
+   ],
+   "temp": "常温",
+   "taste": [
+    "奶香"
+   ],
+   "heft": 1,
+   "nutrition": "纯牛奶（盒装）",
+   "situ": [
+    "单手",
+    "不掉渣"
+   ]
+  },
+  {
+   "name": "100% 苹果汁(盒装)",
+   "kind": "drink",
+   "texture": [],
+   "temp": "常温",
+   "taste": [
+    "甜",
+    "酸"
+   ],
+   "heft": 1,
+   "nutrition": "100%苹果汁",
+   "situ": [
+    "单手",
+    "不掉渣"
+   ]
+  },
+  {
+   "name": "浓缩咖啡",
+   "kind": "coffee",
+   "texture": [],
+   "temp": "热",
+   "taste": [
+    "苦香",
+    "浓郁"
+   ],
+   "heft": 1,
+   "nutrition": "浓缩咖啡",
+   "situ": [
+    "单手",
+    "不掉渣"
+   ]
+  },
+  {
+   "name": "麦咖啡™美式",
+   "kind": "coffee",
+   "texture": [],
+   "temp": "热",
+   "taste": [
+    "苦香"
+   ],
+   "heft": 1,
+   "nutrition": "热美式中杯",
+   "situ": [
+    "单手",
+    "不掉渣"
+   ]
+  },
+  {
+   "name": "鲜萃咖啡",
+   "kind": "coffee",
+   "texture": [],
+   "temp": "热",
+   "taste": [
+    "苦香",
+    "清爽"
+   ],
+   "heft": 1,
+   "nutrition": "小杯鲜萃咖啡",
+   "situ": [
+    "单手",
+    "不掉渣"
+   ]
+  },
+  {
+   "name": "麦咖啡™奶铁",
+   "kind": "coffee",
+   "texture": [
+    "顺滑"
+   ],
+   "temp": "热",
+   "taste": [
+    "奶香",
+    "苦香"
+   ],
+   "heft": 1,
+   "nutrition": "热奶铁中杯",
+   "situ": [
+    "单手",
+    "不掉渣"
+   ]
+  },
+  {
+   "name": "燕麦奶铁",
+   "kind": "coffee",
+   "texture": [
+    "顺滑"
+   ],
+   "temp": "热",
+   "taste": [
+    "奶香",
+    "苦香"
+   ],
+   "heft": 1,
+   "nutrition": "热燕麦奶铁中杯",
+   "situ": [
+    "单手",
+    "不掉渣"
+   ]
+  },
+  {
+   "name": "卡布奇诺",
+   "kind": "coffee",
+   "texture": [
+    "绵密"
+   ],
+   "temp": "热",
+   "taste": [
+    "奶香",
+    "苦香"
+   ],
+   "heft": 1,
+   "nutrition": "卡布奇诺中杯",
+   "situ": [
+    "单手",
+    "不掉渣"
+   ]
+  },
+  {
+   "name": "咖啡阿芙佳朵",
+   "kind": "coffee",
+   "texture": [
+    "顺滑"
+   ],
+   "temp": "冰",
+   "taste": [
+    "苦香",
+    "奶香",
+    "甜"
+   ],
+   "heft": 1,
+   "nutrition": "咖啡阿芙佳朵",
+   "situ": [
+    "单手",
+    "不掉渣"
+   ]
+  },
+  {
+   "name": "奶铁雪冰",
+   "kind": "coffee",
+   "texture": [
+    "绵密"
+   ],
+   "temp": "冰",
+   "taste": [
+    "奶香",
+    "苦香",
+    "甜"
+   ],
+   "heft": 2,
+   "nutrition": null,
+   "situ": [
+    "单手",
+    "不掉渣"
+   ]
+  },
+  {
+   "name": "浓浓黑巧（冰/热）",
+   "kind": "coffee",
+   "texture": [
+    "顺滑"
+   ],
+   "temp": "热",
+   "taste": [
+    "浓郁",
+    "甜"
+   ],
+   "heft": 1,
+   "nutrition": "热浓浓黑巧中杯",
+   "situ": [
+    "单手",
+    "不掉渣"
+   ]
+  },
+  {
+   "name": "浓浓燕麦黑巧（冰/热）",
+   "kind": "coffee",
+   "texture": [
+    "顺滑"
+   ],
+   "temp": "热",
+   "taste": [
+    "浓郁",
+    "甜"
+   ],
+   "heft": 1,
+   "nutrition": "热浓浓燕麦黑巧中杯",
+   "situ": [
+    "单手",
+    "不掉渣"
+   ]
+  },
+  {
+   "name": "牛奶",
+   "kind": "coffee",
+   "texture": [
+    "顺滑"
+   ],
+   "temp": "热",
+   "taste": [
+    "奶香"
+   ],
+   "heft": 1,
+   "nutrition": "热牛奶中杯",
+   "situ": [
+    "单手",
+    "不掉渣"
+   ]
+  },
+  {
+   "name": "燕麦奶",
+   "kind": "coffee",
+   "texture": [
+    "顺滑"
+   ],
+   "temp": "热",
+   "taste": [
+    "奶香",
+    "甜"
+   ],
+   "heft": 1,
+   "nutrition": "热燕麦奶中杯",
+   "situ": [
+    "单手",
+    "不掉渣"
+   ]
+  },
+  {
+   "name": "猪柳蛋麦满分",
+   "kind": "breakfast",
+   "texture": [
+    "软嫩",
+    "嚼劲"
+   ],
+   "temp": "热",
+   "taste": [
+    "咸香",
+    "奶香"
+   ],
+   "heft": 2,
+   "nutrition": "猪柳蛋麦满分",
+   "situ": [
+    "单手",
+    "不掉渣"
+   ]
+  },
+  {
+   "name": "猪柳麦满分",
+   "kind": "breakfast",
+   "texture": [
+    "嚼劲"
+   ],
+   "temp": "热",
+   "taste": [
+    "咸香"
+   ],
+   "heft": 2,
+   "nutrition": "猪柳麦满分",
+   "situ": [
+    "单手",
+    "不掉渣"
+   ]
+  },
+  {
+   "name": "烟肉蛋麦满分",
+   "kind": "breakfast",
+   "texture": [
+    "软嫩"
+   ],
+   "temp": "热",
+   "taste": [
+    "焦香",
+    "咸香"
+   ],
+   "heft": 2,
+   "nutrition": "烟肉蛋麦满分",
+   "situ": [
+    "单手",
+    "不掉渣"
+   ]
+  },
+  {
+   "name": "火腿扒麦满分",
+   "kind": "breakfast",
+   "texture": [
+    "软嫩"
+   ],
+   "temp": "热",
+   "taste": [
+    "咸香"
+   ],
+   "heft": 1,
+   "nutrition": "火腿扒麦满分",
+   "situ": [
+    "单手",
+    "不掉渣",
+    "快吃完"
+   ]
+  },
+  {
+   "name": "大脆鸡扒麦满分",
+   "kind": "breakfast",
+   "texture": [
+    "脆",
+    "多汁"
+   ],
+   "temp": "热",
+   "taste": [
+    "咸香"
+   ],
+   "heft": 2,
+   "nutrition": "大脆鸡扒麦满分",
+   "situ": [
+    "单手"
+   ]
+  },
+  {
+   "name": "原味板烧鸡腿麦满分",
+   "kind": "breakfast",
+   "texture": [
+    "多汁",
+    "嚼劲"
+   ],
+   "temp": "热",
+   "taste": [
+    "焦香",
+    "甜"
+   ],
+   "heft": 2,
+   "nutrition": "原味板烧鸡腿麦满分",
+   "situ": [
+    "单手",
+    "不掉渣"
+   ]
+  },
+  {
+   "name": "脆香油条",
+   "kind": "breakfast",
+   "texture": [
+    "脆",
+    "酥"
+   ],
+   "temp": "热",
+   "taste": [
+    "咸香"
+   ],
+   "heft": 1,
+   "nutrition": "脆香油条",
+   "situ": [
+    "单手"
+   ]
+  },
+  {
+   "name": "皮蛋鸡肉粥",
+   "kind": "breakfast",
+   "texture": [
+    "绵密",
+    "顺滑"
+   ],
+   "temp": "热",
+   "taste": [
+    "鲜",
+    "咸香"
+   ],
+   "heft": 1,
+   "nutrition": "皮蛋鸡肉粥",
+   "situ": [
+    "不掉渣"
+   ]
+  },
+  {
+   "name": "雪菜脆笋鸡肉粥",
+   "kind": "breakfast",
+   "texture": [
+    "绵密",
+    "脆"
+   ],
+   "temp": "热",
+   "taste": [
+    "鲜",
+    "清爽"
+   ],
+   "heft": 1,
+   "nutrition": "雪菜脆笋鸡肉粥",
+   "situ": [
+    "不掉渣"
+   ]
+  },
+  {
+   "name": "优品豆浆",
+   "kind": "breakfast",
+   "texture": [
+    "顺滑"
+   ],
+   "temp": "热",
+   "taste": [
+    "清爽",
+    "甜"
+   ],
+   "heft": 1,
+   "nutrition": "优品豆浆小杯",
+   "situ": []
+  },
+  {
+   "name": "鸡肉蛋沙拉叠叠卷",
+   "kind": "breakfast",
+   "texture": [
+    "软嫩",
+    "脆"
+   ],
+   "temp": "常温",
+   "taste": [
+    "清爽",
+    "奶香"
+   ],
+   "heft": 1,
+   "nutrition": "鸡肉蛋沙拉叠叠卷",
+   "situ": [
+    "单手",
+    "不掉渣"
+   ]
+  },
+  {
+   "name": "鲜蔬蛋沙拉叠叠卷",
+   "kind": "breakfast",
+   "texture": [
+    "软嫩",
+    "脆"
+   ],
+   "temp": "常温",
+   "taste": [
+    "清爽"
+   ],
+   "heft": 1,
+   "nutrition": "鲜蔬蛋沙拉叠叠卷",
+   "situ": [
+    "单手",
+    "不掉渣"
+   ]
+  }
+ ]
 }
