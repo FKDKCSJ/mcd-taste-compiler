@@ -85,7 +85,10 @@ def load_or_fetch(path, tool, args=None):
 # ---------- 场景识别 ----------
 
 def resolve_scene(mood, scenes, slang):
-    if any(w in mood for w in slang["crisis"]):
+    probe = mood
+    for w in slang.get("crisis_exclude", []):
+        probe = probe.replace(w, "")
+    if any(w in probe for w in slang["crisis"]):
         return None, "crisis"
     by_id = {s["id"]: s for s in scenes}
     if mood in by_id:
@@ -100,6 +103,9 @@ def resolve_scene(mood, scenes, slang):
             hits.setdefault(s["id"], []).append(s["label"])
     if not hits:
         return by_id["light-snack"], "default"
+    # 同场景内"热死"和"热死了"只算一次
+    hits = {k: [w for w in ws if not any(w != o and w.lower() in o.lower() for o in ws)]
+            for k, ws in hits.items()}
     sid = max(hits, key=lambda k: len(hits[k]))
     return by_id[sid], "、".join(hits[sid])
 
@@ -167,16 +173,23 @@ def build_combos(cands, scene, top=3, per_slot=6):
         coverage = sum(1 for t in scene["want"] if t in tags)
         combos.append((sum(p["score"] for p in picks) + coverage, picks))
     combos.sort(key=lambda x: -x[0])
-    # 主力单品不重复，给用户真正不同的选择
-    chosen, seen = [], set()
-    for score, picks in combos:
-        if picks[0]["name"] in seen:
-            continue
-        seen.add(picks[0]["name"])
-        chosen.append((score, picks))
-        if len(chosen) == top:
-            break
-    return chosen
+
+    def dedup(mode):
+        chosen, seen = [], set()
+        for score, picks in combos:
+            names = {p["name"] for p in picks}
+            clash = names & seen if mode == "any" else picks[0]["name"] in seen
+            if clash:
+                continue
+            seen |= names
+            chosen.append((score, picks))
+            if len(chosen) == top:
+                break
+        return chosen
+
+    # 先要整组不重复（小食/饮品也换掉），候选不够 top 再放宽到只换主力
+    strict = dedup("any")
+    return strict if len(strict) == top else dedup("main")
 
 
 def flavor_profile(picks):
@@ -240,7 +253,7 @@ def main():
         sys.exit(CRISIS_EXIT)
 
     if not a.menu and not a.store:
-        sys.exit("在线模式需要 --store（用 query-nearby-stores 查 storeCode）")
+        sys.exit("缺少门店：请先问用户在哪（城市+地标/商圈），用 query-nearby-stores 查到 storeCode 后重试")
     order_type = 2 if a.be_type in (2, 6) else 1
     menu_args = {"storeCode": a.store, "beType": a.be_type, "orderType": order_type}
     if a.be_code:

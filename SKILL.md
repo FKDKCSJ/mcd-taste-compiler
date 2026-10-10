@@ -15,13 +15,13 @@ description: 味觉编译器：用户用一句话或网络用语描述此刻的�
 ## 流程
 
 1. **识别心情**：把用户原话（含网络用语、emoji）原样作为 `--mood`，不要改写。
-2. **定门店**：问用户在哪（城市+地标），调用 `query-nearby-stores`（`searchType=2`，`beType=1` 到店；想得来速用 `beType=5` 并记下 `beCode`）。外送则走 `delivery-query-addresses` → `delivery-query-stores`（`beType=2`）。
+2. **定门店**：问用户在哪（城市+地标），调用 `query-nearby-stores`（`searchType=2`，`beType=1` 到店；想得来速用 `beType=5` 并记下 `beCode`）。外送则走 `delivery-query-addresses` → `delivery-query-stores`（`beType=2`）。地址列表为空时，引导用户提供城市、详细地址、联系人、手机号，复述确认后再调用 `delivery-create-address`，不要编造地址。
 3. **编译**：
    ```bash
    python3 scripts/compile.py --mood "<用户原话>" --store <storeCode> [--be-type 2 --be-code <beCode>] --format json
    ```
    脚本内部调用 `query-meals`、`list-nutrition-foods`、`calculate-price`（全部只读），返回最多 3 套方案。
-4. **展示**：用卡片形式展示每套方案：场景、单品、真实价格（`price.price`，单位元）、热量（`kcal` 为 null 时写"部分暂无"）、风味分布、场景梗（`scene.quip`）。结尾固定附一句"仅供娱乐参考，不构成营养建议；价格以下单页为准"。
+4. **展示**：用卡片形式展示每套方案：场景、单品、真实价格（`price.price`，单位元）、热量（`kcal` 为 null 时写"部分暂无"）、风味分布、场景梗（`scene.quip`）。如果场景和当前时段不符（如"周一早八"但此刻是夜市菜单），先说明"现在不是早餐时段"，再给方案。结尾固定附一句"仅供娱乐参考，不构成营养建议；价格以下单页为准"。
 5. **下单（可选）**：只有用户明确说"就这个/下单"时，才调用 `create-order`。下单前把门店、单品、数量、总价完整复述一遍，得到"确认"后再调用。返回的支付链接交给用户自己支付。
 
 ## 红线（必须遵守）

@@ -75,9 +75,14 @@
    },
    "avoid": {
     "浓郁": -1,
-    "热": -1
+    "热": -1,
+    "脆": -1
    },
-   "heft": 1
+   "heft": 1,
+   "prefer_kind": [
+    "dessert",
+    "drink"
+   ]
   },
   {
    "id": "spicy-craving",
