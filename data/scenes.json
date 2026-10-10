@@ -1,0 +1,203 @@
+{
+ "_note": "场景 → 期望风味向量。只描述口味偏好和份量，不做任何生理/医学推断。weight: 正数=想要，负数=不想要。",
+ "scenes": [
+  {
+   "id": "late-overtime",
+   "label": "加班到深夜",
+   "quip": "编译还没过，先给胃打个补丁",
+   "want": {
+    "热": 2,
+    "咸香": 2,
+    "多汁": 1,
+    "浓郁": 1
+   },
+   "avoid": {
+    "苦香": -1
+   },
+   "heft": 2
+  },
+  {
+   "id": "monday-morning",
+   "label": "周一早上起不来",
+   "quip": "开机自检中，请稍候",
+   "want": {
+    "热": 2,
+    "苦香": 2,
+    "咸香": 1,
+    "软嫩": 1
+   },
+   "avoid": {
+    "冰": -1
+   },
+   "heft": 2,
+   "prefer_kind": [
+    "breakfast",
+    "coffee"
+   ]
+  },
+  {
+   "id": "after-exam",
+   "label": "刚考完试 / 刚上线",
+   "quip": "Release 成功，奖励自己一个 tag",
+   "want": {
+    "脆": 2,
+    "焦香": 1,
+    "甜": 1,
+    "碳酸": 1
+   },
+   "avoid": {},
+   "heft": 3
+  },
+  {
+   "id": "rainy-home",
+   "label": "下雨不想出门",
+   "quip": "今日天气：适合 git stash 自己",
+   "want": {
+    "热": 2,
+    "绵密": 1,
+    "奶香": 1,
+    "顺滑": 1
+   },
+   "avoid": {
+    "冰": -1
+   },
+   "heft": 2
+  },
+  {
+   "id": "summer-heat",
+   "label": "热到不想动",
+   "quip": "CPU 降频中，需要主动散热",
+   "want": {
+    "冰": 3,
+    "清爽": 2,
+    "酸": 1,
+    "碳酸": 1
+   },
+   "avoid": {
+    "浓郁": -1,
+    "热": -1
+   },
+   "heft": 1
+  },
+  {
+   "id": "spicy-craving",
+   "label": "想吃点刺激的",
+   "quip": "开启 --verbose 模式",
+   "want": {
+    "辣": 3,
+    "脆": 1,
+    "冰": 1
+   },
+   "avoid": {},
+   "heft": 2
+  },
+  {
+   "id": "light-snack",
+   "label": "下午有点饿，但不想太撑",
+   "quip": "轻量级补丁，不重启",
+   "want": {
+    "脆": 1,
+    "清爽": 1,
+    "甜": 1
+   },
+   "avoid": {
+    "浓郁": -1
+   },
+   "heft": 1
+  },
+  {
+   "id": "post-workout",
+   "label": "刚运动完",
+   "quip": "进度条已加载，补充点数据",
+   "want": {
+    "多汁": 1,
+    "鲜": 1,
+    "清爽": 2
+   },
+   "avoid": {
+    "甜": -1
+   },
+   "heft": 2,
+   "sort_by": "protein"
+  },
+  {
+   "id": "friends-gathering",
+   "label": "和朋友一起",
+   "quip": "多线程并发，注意抢锁",
+   "want": {
+    "脆": 2,
+    "咸香": 2,
+    "碳酸": 1
+   },
+   "avoid": {},
+   "heft": 3,
+   "share": true
+  },
+  {
+   "id": "need-comfort",
+   "label": "今天有点丧",
+   "quip": "抛个异常也没关系，catch 住就好",
+   "want": {
+    "热": 1,
+    "奶香": 2,
+    "顺滑": 1,
+    "甜": 1
+   },
+   "avoid": {},
+   "heft": 2,
+   "portion_cap": 2
+  },
+  {
+   "id": "date",
+   "label": "约会",
+   "quip": "双人 pair programming，记得留一口给对方",
+   "want": {
+    "甜": 2,
+    "冰": 1,
+    "脆": 1,
+    "奶香": 1
+   },
+   "avoid": {
+    "辣": -1
+   },
+   "heft": 2,
+   "share": true
+  },
+  {
+   "id": "with-kids",
+   "label": "带娃",
+   "quip": "子进程已 fork，资源优先分配给它",
+   "want": {
+    "甜": 2,
+    "脆": 1,
+    "奶香": 1,
+    "咸香": 1
+   },
+   "avoid": {
+    "辣": -3,
+    "苦香": -3
+   },
+   "heft": 2,
+   "prefer_kind": [
+    "chicken",
+    "side",
+    "dessert"
+   ]
+  },
+  {
+   "id": "midnight-hungry",
+   "label": "凌晨饿醒",
+   "quip": "守护进程被唤醒，轻量处理后继续休眠",
+   "want": {
+    "热": 2,
+    "咸香": 1,
+    "绵密": 1
+   },
+   "avoid": {
+    "苦香": -3,
+    "碳酸": -1
+   },
+   "heft": 1
+  }
+ ]
+}
