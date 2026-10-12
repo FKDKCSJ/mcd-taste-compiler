@@ -1,5 +1,14 @@
 # 味觉编译器 · mcd-taste-compiler
 
+<p align="center">
+  <img src="./docs/cards/1-overtime.png" width="32%" alt="加班到11点，牛马麻了" />
+  <img src="./docs/cards/2-slump.png" width="32%" alt="下午3点有点困，想摸鱼" />
+  <img src="./docs/cards/3-rainy.png" width="32%" alt="下雨天宅家，有点emo" />
+</p>
+
+<p align="center"><b>说一句你现在的状态，它把你编译成这家麦当劳此刻真能点到的三种吃法。</b><br/>
+顺着来 · 换个频道 · 最省事 —— 真实价格、真实热量，截图即分享</p>
+
 > "今晚吃什么"这个千古难题，不该让你在麦当劳小程序里翻三分钟菜单。
 > 丢过来一句话——"加班到11点牛马麻了"、"热化了🥵"、"周一早八困成狗"——它把你此刻的状态编译成这家门店**现在真能点到的**风味组合：真实价格、真实热量、一张能直接发群的编译卡片。
 
@@ -29,10 +38,6 @@ $ taste-compiler --mood "加班到11点，牛马麻了"
 // 编译还没过，先给胃打个补丁
 // 价格以下单页为准；仅供娱乐参考，不构成营养建议
 ```
-
-编译结果长这样（`scripts/card.py` 一键生成，竖版 9:16，截图即分享）：
-
-![味觉编译卡片](./docs/card.png)
 
 ## 它做什么
 
@@ -121,7 +126,7 @@ scripts/card.py          9:16 分享卡片渲染（HTML + 内联 SVG，零依赖
 data/flavor-tags.json    单品风味标签 + 营养名称映射
 data/scenes.json         场景 → 风味向量
 data/slang.json          网络用语 → 场景（含 emoji / 拼音缩写 / 危机词表）
-docs/card.png            卡片示例截图
+docs/cards/              卡片示例（加班 / 犯困 / emo）
 MCP_INTEGRATION.md       MCP 工具与调用流程
 ```
 

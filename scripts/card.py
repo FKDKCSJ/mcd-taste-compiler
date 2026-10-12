@@ -53,7 +53,7 @@ body.shot .card{border-radius:0;border:none;box-shadow:none}
 .quote .words i{font-style:normal;color:#FFC72C}
 
 /* 2/3. 编译日志 */
-.log{flex:0 0 auto;font-size:11px;color:#C9CDD4;line-height:1.5}
+.log{flex:0 0 auto;font-size:12px;color:#C9CDD4;line-height:1.5}
 .log .k{color:#7E848E}
 .log .v{color:#E4E6EA}
 .log .sect{color:#FFC72C;font-weight:700}
@@ -74,18 +74,18 @@ body.shot .card{border-radius:0;border:none;box-shadow:none}
 .p-top{display:flex;gap:12px;align-items:center}
 .p-main{flex:1;min-width:0}
 .p-head{display:flex;align-items:baseline;gap:8px}
-.p-cmd{font-size:12.5px;font-weight:700;color:#FFC72C;letter-spacing:.2px}
-.p-name{font-size:16px;font-weight:700;color:#F3F5F8}
-.p-price{margin-left:auto;font-size:18px;color:#FF3B30;font-weight:700}
-.p-kcal{font-size:10px;color:#8A8F98}
-.p-hint{font-size:10px;color:#7E848E;margin-top:5px}
-.p-items{font-size:12px;color:#E4E6EA;line-height:1.55;margin-top:9px}
-.p-items .q{color:#FFC72C;font-size:10px;margin-right:2px}
+.p-cmd{font-size:15px;font-weight:700;color:#FFC72C;letter-spacing:.2px}
+.p-name{font-size:21px;font-weight:700;color:#F3F5F8}
+.p-price{margin-left:auto;font-size:25px;color:#FF3B30;font-weight:700}
+.p-kcal{font-size:12px;color:#8A8F98}
+.p-hint{font-size:12.5px;color:#7E848E;margin-top:6px}
+.p-items{font-size:16px;color:#E4E6EA;line-height:1.6;margin-top:12px}
+.p-items .q{color:#FFC72C;font-size:13px;margin-right:2px}
 .p-items .sep{color:#4E5157;margin:0 5px}
-.p-items .t{color:#7E848E;font-size:9.5px;margin-left:3px}
-.why{font-size:10.5px;color:#8FD3A0;line-height:1.5;margin-top:8px}
+.p-items .t{color:#7E848E;font-size:12px;margin-left:3px}
+.why{font-size:13px;color:#8FD3A0;line-height:1.5;margin-top:11px}
 .why b{color:#5F6773;font-weight:400}
-.radar{flex:0 0 78px;height:78px}
+.radar{flex:0 0 108px;height:108px}
 .foot{flex:0 0 auto;padding:8px 18px 12px;border-top:1px dashed #26282E;
   color:#6E737D;font-size:9.5px;line-height:1.55}
 .foot b{color:#DA291C;font-weight:700}

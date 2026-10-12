@@ -160,6 +160,7 @@ def lex(mood, by_id, slang, now):
                 hits.setdefault(sid, set()).update(ws)
                 readings.update(by_id[sid]["reading"])
         if t and t[1].strip() in c:
+            readings.pop("时段", None)  # 已有具体时间，不再重复写时段
             readings = {"时间": f"{t[0]:02d}:00 {slot_of(t[0])}", **readings}
         lvl = intensity(c)
         if lvl:
