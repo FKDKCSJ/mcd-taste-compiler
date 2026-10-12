@@ -131,6 +131,13 @@ def intensity(text):
     return None
 
 
+def apply_slot(scene, hour):
+    """白天（06-18 点）用 scene["day"] 覆盖，如"加班"白天叫"工位续命"且不排除咖啡。"""
+    if scene.get("day") and 6 <= hour < 18:
+        return {**scene, **scene["day"]}
+    return scene
+
+
 def is_crisis(mood, slang):
     probe = mood
     for w in slang.get("crisis_exclude", []):
@@ -383,8 +390,9 @@ def main():
     tags = json.loads((ROOT / "data/flavor-tags.json").read_text())
     scenes = json.loads((ROOT / "data/scenes.json").read_text())["scenes"]
     slang = json.loads((ROOT / "data/slang.json").read_text())
-    by_id = {s["id"]: s for s in scenes}
     now = datetime.strptime(a.now, "%Y-%m-%d %H:%M") if a.now else datetime.now()
+    said = parse_time(a.mood, now)
+    by_id = {s["id"]: apply_slot(s, said[0] if said else now.hour) for s in scenes}
 
     if is_crisis(a.mood, slang):
         msg = {"crisis": True, "message": "听起来你现在很难受。食物帮不上这个忙，请找人聊聊：全国心理援助热线 12356，或北京心理危机研究与干预中心 010-82951332。"}
