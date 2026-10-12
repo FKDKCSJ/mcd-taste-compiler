@@ -189,7 +189,8 @@ def make_need(mix, mood):
     caps = [s["portion_cap"] for s in scenes if s.get("portion_cap")]
     return {
         "want": want, "avoid": avoid,
-        "hard_avoid": {t: v for s in scenes for t, v in s.get("avoid", {}).items() if v <= -3},
+        # 卡片上写了"此刻不要"，三种策略都得守住，否则会自相矛盾
+        "hard_avoid": {t: min(-6, v) for t, v in avoid.items() if v < 0},
         "flip": {t: v for t, v in mix[0][0].get("flip", {}).items()},
         "prefer_kind": sorted({k for s in scenes for k in s.get("prefer_kind", [])}),
         "situ": sorted({x for s in scenes for x in s.get("situ", [])}),

@@ -1,6 +1,13 @@
 #!/usr/bin/env python3
 """味觉编译卡片：把 compile.py --format json 的输出渲染成竖版 9:16 的 HTML 分享卡片。
 
+版式（自上而下）：
+  1. 用户原话（大字，主角）
+  2. 词法分析：逐句解读，像编译日志
+  3. 语义分析：场景混合 + 想要/不要 + 黄色警告条
+  4. 三种策略：--follow 顺着来 / --flip 换个频道 / --minimal 最省事
+  5. 场景梗 + 免责小字
+
 用法：
   python3 scripts/compile.py --mood "加班到11点，牛马麻了" --store 1950564 --format json > out/result.json
   python3 scripts/card.py out/result.json --mood "加班到11点，牛马麻了" -o out/card.html --open
@@ -34,35 +41,61 @@ body.shot .card{border-radius:0;border:none;box-shadow:none}
 .dot{width:10px;height:10px;border-radius:50%}
 .dot.r{background:#DA291C}.dot.y{background:#FFC72C}.dot.g{background:#4E5157}
 .bar-t{margin-left:8px;color:#6E737D;font-size:10.5px;letter-spacing:.4px}
-.term{flex:1;padding:16px 18px 8px;display:flex;flex-direction:column;gap:9px;overflow:hidden}
-.log{font-size:11.5px;color:#C9CDD4;line-height:1.55}
-.prompt{color:#FFC72C;font-weight:700}
-.str{color:#8FD3A0}
-.ok{color:#3FB950}
-.dim{color:#6E737D}
-.hr{color:#3A3D44;font-size:10px;letter-spacing:2px;margin:2px 0 0}
-.scheme{flex:1 1 0;display:flex;flex-direction:column;border:1px solid #26282E;border-left:3px solid #DA291C;
-  border-radius:8px;background:#131418;padding:9px 11px}
-.s-head{display:flex;align-items:baseline;gap:9px;margin-bottom:7px}
-.tag{font-size:10.5px;color:#0E0F12;background:#FFC72C;border-radius:3px;padding:1.5px 6px;font-weight:700}
-.price{font-size:17px;color:#FF3B30;font-weight:700;letter-spacing:.3px}
-.kcal{font-size:11px;color:#8A8F98}
-.s-body{display:flex;gap:10px;align-items:center;flex:1}
-.items{flex:1;display:flex;flex-direction:column;gap:5px;min-width:0}
-.item{font-size:11.5px;color:#E4E6EA;line-height:1.35;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.item em{font-style:normal;color:#7E848E;font-size:10px;margin-left:5px}
-.q{color:#FFC72C;font-size:10.5px;margin-right:4px}
-.radar{flex:0 0 118px;height:118px}
-.foot{flex:0 0 auto;padding:10px 18px 14px;border-top:1px dashed #26282E;
-  color:#6E737D;font-size:9.5px;line-height:1.6}
+.term{flex:1;padding:14px 18px 6px;display:flex;flex-direction:column;gap:7px;overflow:hidden}
+
+/* 1. 用户原话 */
+.quote{flex:0 0 auto;position:relative;padding:9px 12px 9px 14px;background:#15171C;border:1px solid #2A2D33;
+  border-left:4px solid #FFC72C;border-radius:8px}
+.quote .cmd{font-size:10.5px;color:#6E737D;margin-bottom:4px}
+.quote .cmd b{color:#FFC72C}
+.quote .words{font-size:26px;line-height:1.24;font-weight:700;color:#F3F5F8;letter-spacing:.5px;
+  word-break:break-word}
+.quote .words i{font-style:normal;color:#FFC72C}
+
+/* 2/3. 编译日志 */
+.log{flex:0 0 auto;font-size:11px;color:#C9CDD4;line-height:1.5}
+.log .k{color:#7E848E}
+.log .v{color:#E4E6EA}
+.log .sect{color:#FFC72C;font-weight:700}
+.log .dim{color:#6E737D}
+.log .ok{color:#3FB950}
+.mix{color:#8FD3A0}
+.warn{flex:0 0 auto;background:#3A2B06;border:1px solid #7A5A0B;border-left:3px solid #FFC72C;
+  border-radius:6px;padding:6px 10px;font-size:10.5px;color:#FFD666;line-height:1.45}
+.hr{flex:0 0 auto;color:#5A5E66;font-size:9.5px;letter-spacing:3px;text-align:center;margin:2px 0}
+
+/* 4. 三种策略 */
+.plan{flex:1 1 0;display:flex;flex-direction:column;justify-content:center;
+  border:1px solid #26282E;border-left:3px solid #DA291C;border-radius:8px;
+  background:#131418;padding:10px 14px}
+.plan.follow{border-left-color:#DA291C}
+.plan.flip{border-left-color:#FFC72C}
+.plan.minimal{border-left-color:#4E5157}
+.p-top{display:flex;gap:12px;align-items:center}
+.p-main{flex:1;min-width:0}
+.p-head{display:flex;align-items:baseline;gap:8px}
+.p-cmd{font-size:12.5px;font-weight:700;color:#FFC72C;letter-spacing:.2px}
+.p-name{font-size:16px;font-weight:700;color:#F3F5F8}
+.p-price{margin-left:auto;font-size:18px;color:#FF3B30;font-weight:700}
+.p-kcal{font-size:10px;color:#8A8F98}
+.p-hint{font-size:10px;color:#7E848E;margin-top:5px}
+.p-items{font-size:12px;color:#E4E6EA;line-height:1.55;margin-top:9px}
+.p-items .q{color:#FFC72C;font-size:10px;margin-right:2px}
+.p-items .sep{color:#4E5157;margin:0 5px}
+.p-items .t{color:#7E848E;font-size:9.5px;margin-left:3px}
+.why{font-size:10.5px;color:#8FD3A0;line-height:1.5;margin-top:8px}
+.why b{color:#5F6773;font-weight:400}
+.radar{flex:0 0 78px;height:78px}
+.foot{flex:0 0 auto;padding:8px 18px 12px;border-top:1px dashed #26282E;
+  color:#6E737D;font-size:9.5px;line-height:1.55}
 .foot b{color:#DA291C;font-weight:700}
 """
 
 
-def radar_svg(profile, size=118):
+def radar_svg(profile, size=78):
     """8 轴风味雷达图，纯手写 SVG。profile: {轴名: 0~1}"""
     cx = cy = size / 2
-    r = size / 2 - 16
+    r = size / 2 - 13
     n = len(AXES)
 
     def pt(i, ratio):
@@ -72,8 +105,8 @@ def radar_svg(profile, size=118):
     def ring(ratio):
         return " ".join(f"{x:.1f},{y:.1f}" for x, y in (pt(i, ratio) for i in range(n)))
 
-    out = [f'<svg class="radar" viewBox="-13 -2 144 122" xmlns="http://www.w3.org/2000/svg">']
-    for ratio in (0.25, 0.5, 0.75, 1.0):
+    out = [f'<svg class="radar" viewBox="-16 -2 110 82" xmlns="http://www.w3.org/2000/svg">']
+    for ratio in (0.5, 1.0):
         out.append(f'<polygon points="{ring(ratio)}" fill="none" stroke="#33363D" '
                    f'stroke-width="{1 if ratio == 1 else 0.6}"/>')
     for i in range(n):
@@ -81,24 +114,19 @@ def radar_svg(profile, size=118):
         out.append(f'<line x1="{cx}" y1="{cy}" x2="{x:.1f}" y2="{y:.1f}" stroke="#2A2D33" stroke-width="0.6"/>')
     vals = [(profile.get(a, 0) or 0) for a in AXES]
     if any(vals):
-        pts = " ".join(f"{x:.1f},{y:.1f}" for x, y in (pt(i, max(v, 0.06)) for i, v in enumerate(vals)))
-        out.append(f'<polygon points="{pts}" fill="{RED}" fill-opacity="0.45" stroke="{RED}" stroke-width="1.6"/>')
-        for i, v in enumerate(vals):
-            if v > 0:
-                x, y = pt(i, v)
-                out.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="1.7" fill="{YELLOW}"/>')
+        pts = " ".join(f"{x:.1f},{y:.1f}" for x, y in (pt(i, max(v, 0.08)) for i, v in enumerate(vals)))
+        out.append(f'<polygon points="{pts}" fill="{RED}" fill-opacity="0.45" stroke="{RED}" stroke-width="1.5"/>')
     for i, a in enumerate(AXES):
         rad = -math.pi / 2 + i * 2 * math.pi / n
-        lx, ly = cx + (r + 7) * math.cos(rad), cy + (r + 7) * math.sin(rad)
-        v = vals[i]
-        color = YELLOW if v >= 0.6 else "#9AA0A8"
-        if math.cos(rad) > 0.4:      # 右侧：左对齐，避免出界
-            anchor, lx = "start", cx + r + 5
-        elif math.cos(rad) < -0.4:   # 左侧：右对齐
-            anchor, lx = "end", cx - r - 5
-        else:                        # 上/下：居中
+        lx, ly = cx + (r + 6) * math.cos(rad), cy + (r + 6) * math.sin(rad)
+        color = YELLOW if vals[i] >= 0.5 else "#9AA0A8"
+        if math.cos(rad) > 0.4:
+            anchor, lx = "start", cx + r + 4
+        elif math.cos(rad) < -0.4:
+            anchor, lx = "end", cx - r - 4
+        else:
             anchor = "middle"
-        out.append(f'<text x="{lx:.1f}" y="{ly + 2.6:.1f}" font-size="8.4" text-anchor="{anchor}" '
+        out.append(f'<text x="{lx:.1f}" y="{ly + 2.4:.1f}" font-size="7.6" text-anchor="{anchor}" '
                    f'fill="{color}" font-family="inherit">{a}</text>')
     out.append("</svg>")
     return "".join(out)
@@ -108,36 +136,88 @@ def esc(s):
     return html.escape(str(s), quote=True)
 
 
+def reasons(items, limit=4):
+    """从单品 why 里汇总「对上了」的理由，去重、保序。"""
+    out = []
+    for it in items:
+        w = it.get("why") or {}
+        for r in list(w.get("situ", [])) + list(w.get("taste", [])):
+            if r not in out:
+                out.append(r)
+    return out[:limit]
+
+
+def plan_block(p, show_radar=False):
+    price = (p.get("price") or {}).get("price")
+    price = p.get("estimate") if price is None else price
+    kcal = p.get("kcal")
+    kcal_txt = f"{int(round(kcal))} kcal" if isinstance(kcal, (int, float)) else "部分暂无"
+    q = p.get("qty", 1)
+    qty = f'<span class="q">{q}×</span>' if q > 1 else ""
+    items = []
+    for it in p["items"]:
+        tags = "/".join(list(it.get("taste", []))[:2])
+        q_ = f'<span class="q">{q}×</span>' if q > 1 else ""
+        items.append(f'{q_}{esc(it["name"])}' + (f'<span class="t">{esc(tags)}</span>' if tags else ""))
+    rs = reasons(p["items"])
+    why = "、".join(esc(r) for r in rs) if rs else "—"
+    radar = radar_svg(p["profile"]) if show_radar else ""
+    return (
+        f'<div class="plan {esc(p["strategy"])}"><div class="p-top">'
+        f'<div class="p-main">'
+        f'<div class="p-head"><span class="p-cmd">--{esc(p["strategy"])}</span>'
+        f'<span class="p-name">{esc(p["label"])}</span>'
+        f'<span class="p-price">¥{price:g}</span>'
+        f'<span class="p-kcal">{kcal_txt}</span></div>'
+        f'<div class="p-hint">{esc(p["hint"])}</div>'
+        f'<div class="p-items">{qty}{"<span class=\"sep\">·</span>".join(items)}</div>'
+        f'<div class="why"><b>对上了：</b>{why}</div>'
+        f'</div>{radar}</div></div>')
+
+
 def render(data, mood=None, shot=False):
-    scene, why, results = data["scene"], data.get("matched_by", ""), data["results"]
-    logs = [f'<div class="log"><span class="prompt">$</span> taste-compiler --mood '
-            f'<span class="str">"{esc(mood or scene["label"])}"</span></div>',
-            f'<div class="log ok">✔ 识别场景：{esc(scene["label"])}（依据：{esc(why)}）</div>',
-            f'<div class="log dim">// 候选池 = 本店当前时段在售单品 ∩ 风味标签表 · 共 {len(results)} 套方案</div>',
-            '<div class="hr">—— 编译输出 ————————————————</div>']
+    plans = data.get("plans") or data["results"]
+    scene = data["scene"]
+    quote = mood or data.get("mood") or scene["label"]
+    lex = data.get("lexer") or []
+    mix = data.get("scenes") or [{"label": scene["label"], "weight": 1.0}]
+    needs = data.get("needs") or {"want": [], "avoid": []}
+    warns = data.get("warnings") or []
 
-    blocks = []
-    for i, r in enumerate(results, 1):
-        price = (r.get("price") or {}).get("price")
-        price = r.get("estimate") if price is None else price
-        kcal = r["kcal"]
-        kcal_txt = f'{int(round(kcal))} kcal' if isinstance(kcal, (int, float)) else "热量：部分暂无"
-        q = r.get("qty", 1)
-        qty_html = '<span class="q">×%d</span>' % q if q > 1 else ""
-        items = "".join(
-            '<div class="item">%s%s<em>%s·%s</em></div>' % (
-                qty_html, esc(p["name"]),
-                esc("/".join(p["texture"] + p["taste"])), esc(p["temp"]))
-            for p in r["items"])
-        blocks.append(
-            f'<div class="scheme"><div class="s-head"><span class="tag">方案 {i}</span>'
-            f'<span class="price">¥{price:g}</span><span class="kcal">{kcal_txt}</span></div>'
-            f'<div class="s-body"><div class="items">{items}</div>'
-            f'{radar_svg(r["profile"])}</div></div>')
+    # 1. 原话（主角）
+    head = (f'<div class="quote"><div class="cmd">$ taste-compiler --mood <b>"{esc(quote)}"</b></div>'
+            f'<div class="words"><i>“</i>{esc(quote)}<i>”</i></div></div>')
 
-    body = "".join(logs) + "".join(blocks)
-    body += (f'<div class="log dim">// {esc(scene["quip"])}</div>'
-             f'<div class="log dim">// 风味雷达：{esc("、".join(AXES))}（8 轴，越靠外越强）</div>')
+    # 2. 词法分析
+    lines = []
+    for i, tk in enumerate(lex):
+        lead = '<span class="sect">[词法分析]</span> ' if i == 0 else " " * 12
+        rd = " · ".join(f'<span class="k">{esc(k)}</span> <span class="v">{esc(v)}</span>'
+                        for k, v in tk["readings"].items())
+        lines.append(f'<div class="log">{lead}"{esc(tk["text"])}" → {rd}</div>')
+    if not lex:
+        lines.append('<div class="log"><span class="sect">[词法分析]</span> '
+                     '没认出特别的状态，按「随便吃点」处理</div>')
+
+    # 3. 语义分析
+    mix_txt = " + ".join(f'{s["label"]} {round(s["weight"] * 100)}%' for s in mix)
+    lines.append(f'<div class="log"><span class="sect">[语义分析]</span> '
+                 f'<span class="k">场景混合</span> <span class="mix">{esc(mix_txt)}</span></div>')
+    lines.append(f'<div class="log">{" " * 12}<span class="k">此刻想要</span> '
+                 f'<span class="v">{esc("、".join(needs.get("want") or []) or "随意")}</span></div>')
+    if needs.get("avoid"):
+        lines.append(f'<div class="log">{" " * 12}<span class="k">此刻不要</span> '
+                     f'<span class="v">{esc("、".join(needs["avoid"]))}</span></div>')
+    for w in warns:
+        lines.append(f'<div class="warn">⚠ {esc(w)}</div>')
+
+    # 4. 三种策略
+    blocks = [plan_block(p, show_radar=(p["strategy"] == "follow")) for p in plans]
+
+    # 5. 收尾
+    tail = '<div class="hr">—— 三种吃法，选一个 ——</div>'
+    body = (head + "".join(lines) + tail + "".join(blocks)
+            + f'<div class="log dim">// {esc(scene["quip"])}</div>')
 
     return f"""<!DOCTYPE html>
 <html lang="zh-CN">
@@ -163,7 +243,7 @@ def render(data, mood=None, shot=False):
 def main():
     ap = argparse.ArgumentParser(description="味觉编译卡片（9:16 HTML）")
     ap.add_argument("input", nargs="?", help="compile.py --format json 的输出文件，缺省读 stdin")
-    ap.add_argument("--mood", help="用户原话，显示在终端提示行里")
+    ap.add_argument("--mood", help="用户原话，显示在卡片最上方")
     ap.add_argument("-o", "--out", default="out/card.html")
     ap.add_argument("--open", action="store_true", help="生成后用系统默认浏览器打开")
     ap.add_argument("--shot", action="store_true", help="截图模式：去掉页面留白，卡片正好铺满 9:16（配 headless Chrome 截图用）")
